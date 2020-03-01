@@ -9,6 +9,7 @@ class AttractionsViewSet(ModelViewSet):
     """ Viewset das aplicações """
     queryset = Attractions.objects.all()
     serializer_class = AttractionsSerializer
+    # filters
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ('name', 'description')
     
