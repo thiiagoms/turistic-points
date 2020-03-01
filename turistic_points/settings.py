@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 # Third apps
 THIRD_APPS = [
     'django_filters',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 # Apps
@@ -60,9 +61,6 @@ MY_APPS = [
 INSTALLED_APPS += THIRD_APPS
 INSTALLED_APPS += MY_APPS
 
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,3 +144,14 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'img'
+
+# Rest settings
+REST_FRAMEWORK = {   
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
